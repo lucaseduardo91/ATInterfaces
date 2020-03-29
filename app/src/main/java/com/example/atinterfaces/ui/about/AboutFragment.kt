@@ -41,7 +41,7 @@ class AboutFragment : Fragment() {
     private fun subscribe(totCompra : TextView){
         pedidoViewModel.total!!.observe(this, Observer {
 
-            totCompra.text = "Total: R$" + pedidoViewModel.total.value.toString()
+            totCompra.text = "Total: R$" + String.format("%.2f",pedidoViewModel.total.value)
         })
     }
 

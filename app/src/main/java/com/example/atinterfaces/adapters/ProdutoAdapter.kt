@@ -13,16 +13,11 @@ import com.example.atinterfaces.models.Produto
 import com.example.atinterfaces.viewmodels.PedidoViewModel
 
 
-class ProdutoAdapter(pedidoViewModel: PedidoViewModel) :
+class ProdutoAdapter(pedidoViewModel: PedidoViewModel, listaProdutos: MutableList<Produto>) :
     RecyclerView.Adapter<ProdutoAdapter.ProdutoViewHolder>(){
 
-    var listaProdutos = mutableListOf<Produto>(Produto("Pizza","Calabresa com cebola e orégano",37.90,R.drawable.pizza),
-        Produto("Hambúrguer","Carne, tomate, alface e queijo",12.50,R.drawable.hamburguer),
-        Produto("Costela","Costela bovina",42.50,R.drawable.costela),
-        Produto("Cerveja","Cerveja artesanal 500mL",17.50,R.drawable.cervejasembkg),
-        Produto("Refrigerante","Coca Cola, Pepsi ou Sprite 2L",6.00,R.drawable.refrigerante))
-
     var pedidoViewModel = pedidoViewModel
+    var listaProdutos = listaProdutos
 
     class ProdutoViewHolder(itemView: View,pedidoViewModel: PedidoViewModel,listaProdutos : MutableList<Produto>):
         RecyclerView.ViewHolder(itemView){
@@ -43,6 +38,10 @@ class ProdutoAdapter(pedidoViewModel: PedidoViewModel) :
 
                 // Insere o produto na lista de produtos do pedido
                 pedidoViewModel.addProduto(listaProdutos[prodIndice])
+
+                //Atualiza qtd do produto na recycler
+                listaProdutos[prodIndice].qtd++
+
             }
             catch(nfe: NumberFormatException){
             }
@@ -59,6 +58,10 @@ class ProdutoAdapter(pedidoViewModel: PedidoViewModel) :
 
                     // Remove o produto na lista de produtos do pedido
                     pedidoViewModel.removeProduto(listaProdutos[prodIndice])
+
+                    //Atualiza qtd do produto na recycler
+                    listaProdutos[prodIndice].qtd--
+
                 }
 
             }
@@ -79,8 +82,8 @@ class ProdutoAdapter(pedidoViewModel: PedidoViewModel) :
 
     override fun onBindViewHolder(holder: ProdutoViewHolder, position: Int) {
 
-        holder.tituloCard.text = listaProdutos[position].nomeProduto.toString()
-        holder.descCard.text = listaProdutos[position].descricao.toString()
+        holder.tituloCard.text = listaProdutos[position].nomeProduto
+        holder.descCard.text = listaProdutos[position].descricao
         holder.precoCard.text = "Preço: R$" + String.format("%.2f",listaProdutos[position].preco)
         holder.imgCard.setImageResource(listaProdutos[position].imagem)
         holder.qtdCard.text = listaProdutos[position].qtd.toString()

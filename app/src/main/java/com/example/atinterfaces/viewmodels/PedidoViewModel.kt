@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.atinterfaces.models.Produto
 
 class PedidoViewModel : ViewModel(){
-    private var produtos = mutableListOf<Produto>()
+    var produtos = mutableListOf<Produto>()
     var total = MutableLiveData<Double>().apply{value = 0.0}
 
     fun addProduto(produto : Produto){
