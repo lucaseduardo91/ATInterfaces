@@ -95,6 +95,18 @@
         android:text="Confirmar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailLayout" />
+
+    <Button
+        android:id="@+id/voltaMenu"
+        android:layout_width="118dp"
+        android:layout_height="47dp"
+        android:text="Menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toEndOf="@+id/confirmaDados"
         app:layout_constraintTop_toBottomOf="@+id/emailLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

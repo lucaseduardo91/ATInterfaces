@@ -22,6 +22,11 @@ class DadosEnvioActivity : AppCompatActivity() {
         var pedidoObj = Gson().fromJson<Pedido>(pedidoTexto,Pedido::class.java)
         this.pedido = pedidoObj
 
+        voltaMenu.setOnClickListener {
+            var i = Intent(this,MenuActivity::class.java)
+            startActivity(i)
+        }
+
         confirmaDados.setOnClickListener {
             var nomeCliente = nome
             var enderecoCliente = endereco
