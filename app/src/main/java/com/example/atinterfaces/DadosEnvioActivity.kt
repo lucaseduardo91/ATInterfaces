@@ -1,5 +1,7 @@
 package com.example.atinterfaces
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -33,7 +35,40 @@ class DadosEnvioActivity : AppCompatActivity() {
             else
             {
                 // Envia e-mail
+                var itensPedido = pedido.produtos
+                var listaProd = ""
+
+                for(item in itensPedido)
+                {
+                    listaProd += item.nomeProduto + " (x" + item.qtd.toString() + ")\n"
+                }
+
+                var valorPed = "Valor do pedido: R$" + String.format("%.2f",pedido.total) + "\n"
+                var mensagem = nomeCliente.text.toString() + ", obrigado por realizar um pedido!\n\n" +
+                        "Estaremos enviando para " + enderecoCliente.text.toString() +".\n\n" + "Pedido:\n\n" +
+                        listaProd + "\n" + valorPed + "\nO prazo para chegada é de 40 minutos.\n" +
+                        "O pagamento poderá ser realizado com cartão de débito ou crédito," +
+                                " ticket refeição ou dinheiro.\n\n" + "Esperamos que goste!"
+
+                var assunto = "Lucas Restaurant: Pedido Realizado"
+                var para = arrayOf(emailCliente.text.toString(),"lucas.pmartins@al.infnet.edu.br")
+
+                geraEmail(para,assunto,mensagem)
+
             }
         }
     }
+
+    fun geraEmail(para: Array<String>, assunto: String, mensagem: String) {
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:") // only email apps should handle this
+            putExtra(Intent.EXTRA_EMAIL, para)
+            putExtra(Intent.EXTRA_SUBJECT, assunto)
+            putExtra(Intent.EXTRA_TEXT, mensagem)
+        }
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        }
+    }
+
 }
