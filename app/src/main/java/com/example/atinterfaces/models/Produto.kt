@@ -12,6 +12,6 @@ class Produto{
         this.descricao = descricao
         this.preco = preco
         this.imagem = imagem
-        this.qtd = 1
+        this.qtd = 0
     }
 }

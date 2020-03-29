@@ -19,6 +19,8 @@ class PedidoViewModel : ViewModel(){
             produtos.add(produto)
 
         total.value = total.value?.plus(produto!!.preco)
+        var aux1 = total.value
+        var aux2 = 2
     }
 
     fun removeProduto(produto : Produto){
@@ -42,14 +44,16 @@ class PedidoViewModel : ViewModel(){
 
         var cont = 0
 
-        while(cont <= produtos.size){
-            if( (produtos[cont].nomeProduto == produto.nomeProduto) &&
-                (produtos[cont].descricao == produto.descricao) &&
-                (produtos[cont].preco.compareTo(produto.preco) == 0) )
-            {
-                return cont
+        if(produtos.size > 0) {
+            while (cont < produtos.size) {
+                if ((produtos[cont].nomeProduto == produto.nomeProduto) &&
+                    (produtos[cont].descricao == produto.descricao) &&
+                    (produtos[cont].preco.compareTo(produto.preco) == 0)
+                ) {
+                    return cont
+                }
+                cont++
             }
-            cont++
         }
         return -1
     }
