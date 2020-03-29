@@ -36,6 +36,9 @@ class AboutFragment : Fragment() {
                 .get(PedidoViewModel::class.java)
         }
         var avaliacao = activity!!.findViewById<RatingBar>(R.id.ratingBar)
+
+        avaliacao.rating = pedidoViewModel.rating
+
         avaliacao.setOnRatingBarChangeListener { ratingBar, rating, fromUser -> pedidoViewModel.rating = rating }
 
         var totCompra = activity!!.findViewById<TextView>(R.id.txtTot)
