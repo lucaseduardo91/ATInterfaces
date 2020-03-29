@@ -9,6 +9,7 @@ import java.io.Serializable
 class PedidoViewModel : ViewModel(), Serializable{
     var produtos = mutableListOf<Produto>()
     var total = MutableLiveData<Double>().apply{value = 0.0}
+    var rating : Float = 0.0f
 
     fun addProduto(produto : Produto){
 

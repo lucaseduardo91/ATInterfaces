@@ -31,6 +31,7 @@ class DadosEnvioActivity : AppCompatActivity() {
             var nomeCliente = nome
             var enderecoCliente = endereco
             var emailCliente = email
+            var rating = pedido.rating
 
             if(nomeCliente.text.isNullOrBlank() || enderecoCliente.text.isNullOrBlank()
                 || emailCliente.text.isNullOrBlank())
@@ -48,12 +49,18 @@ class DadosEnvioActivity : AppCompatActivity() {
                     listaProd += item.nomeProduto + " (x" + item.qtd.toString() + ")\n"
                 }
 
+                var ratingMensagem = ""
+                if(rating > 0.0f)
+                {
+                    ratingMensagem = "Sua avaliação para o restaurante: " + String.format("%.1f",rating) + " estrelas\n\n"
+                }
+
                 var valorPed = "Valor do pedido: R$" + String.format("%.2f",pedido.total) + "\n"
                 var mensagem = nomeCliente.text.toString() + ", obrigado por realizar um pedido!\n\n" +
                         "Estaremos enviando para " + enderecoCliente.text.toString() +".\n\n" + "Pedido:\n\n" +
                         listaProd + "\n" + valorPed + "\nO prazo para chegada é de 40 minutos.\n" +
                         "O pagamento poderá ser realizado com cartão de débito ou crédito," +
-                                " ticket refeição ou dinheiro.\n\n" + "Esperamos que goste!"
+                                " ticket refeição ou dinheiro.\n\n" + ratingMensagem + "Esperamos que goste!"
 
                 var assunto = "Lucas Restaurant: Pedido Realizado"
                 var para = arrayOf(emailCliente.text.toString(),"lucas.pmartins@al.infnet.edu.br")

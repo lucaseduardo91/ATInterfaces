@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -34,6 +35,9 @@ class AboutFragment : Fragment() {
             pedidoViewModel = ViewModelProviders.of(act)
                 .get(PedidoViewModel::class.java)
         }
+        var avaliacao = activity!!.findViewById<RatingBar>(R.id.ratingBar)
+        avaliacao.setOnRatingBarChangeListener { ratingBar, rating, fromUser -> pedidoViewModel.rating = rating }
+
         var totCompra = activity!!.findViewById<TextView>(R.id.txtTot)
         subscribe(totCompra)
     }

@@ -46,7 +46,7 @@ class CartFragment : Fragment() {
         btnEnvPedido.setOnClickListener {
             if(pedidoViewModel.produtos.size > 0)
             {
-                var pedido = Pedido(pedidoViewModel.produtos,pedidoViewModel.total.value!!)
+                var pedido = Pedido(pedidoViewModel.produtos,pedidoViewModel.total.value!!,pedidoViewModel.rating)
                 var textoPedido = Gson().toJson(pedido)
                 val intent = Intent(activity!!, DadosEnvioActivity::class.java)
                 intent.putExtra("pedido", textoPedido)
