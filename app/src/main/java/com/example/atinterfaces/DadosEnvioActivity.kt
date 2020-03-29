@@ -67,7 +67,7 @@ class DadosEnvioActivity : AppCompatActivity() {
             putExtra(Intent.EXTRA_TEXT, mensagem)
         }
         if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent)
+            startActivityForResult(intent,1)
         }
     }
 
