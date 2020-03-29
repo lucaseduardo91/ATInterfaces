@@ -42,9 +42,6 @@ class ProdutoAdapter(pedidoViewModel: PedidoViewModel) :
                 qtdCard.text = qtdAtual.toString()
 
                 // Insere o produto na lista de produtos do pedido
-                var prod = listaProdutos[prodIndice]
-
-                //pedidoViewModel.addProduto(Produto(prod.nomeProduto,prod.descricao,prod.preco,prod.imagem))
                 pedidoViewModel.addProduto(listaProdutos[prodIndice])
             }
             catch(nfe: NumberFormatException){
