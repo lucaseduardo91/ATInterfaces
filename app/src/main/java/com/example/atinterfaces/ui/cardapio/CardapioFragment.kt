@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.view.get
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -38,12 +40,21 @@ class CardapioFragment : Fragment() {
             pedidoViewModel = ViewModelProviders.of(act)
                 .get(PedidoViewModel::class.java)
         }
+        var totCompra = activity!!.findViewById<TextView>(R.id.txtTot)
 
         configurarRecyclerView()
+        subscribe(totCompra)
     }
 
     private fun configurarRecyclerView(){
         listagemProdutos.layoutManager = LinearLayoutManager(activity)
         listagemProdutos.adapter = ProdutoAdapter(pedidoViewModel)
+    }
+
+    private fun subscribe(totCompra : TextView){
+        pedidoViewModel.total!!.observe(this, Observer {
+
+            totCompra.text = "Total: R$" + pedidoViewModel.total.value.toString()
+        })
     }
 }

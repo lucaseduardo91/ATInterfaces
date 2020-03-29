@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -20,9 +21,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-
-        return root
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,13 +31,14 @@ class HomeFragment : Fragment() {
             pedidoViewModel = ViewModelProviders.of(act)
                 .get(PedidoViewModel::class.java)
         }
-
-        subscribe()
+        var totCompra = activity!!.findViewById<TextView>(R.id.txtTot)
+        subscribe(totCompra)
     }
 
-    private fun subscribe(){
+    private fun subscribe(totCompra : TextView){
         pedidoViewModel.total!!.observe(this, Observer {
-            txtTot?.text = "Total: R$" + pedidoViewModel.total.value.toString()
+
+            totCompra.text = "Total: R$" + pedidoViewModel.total.value.toString()
         })
     }
 }

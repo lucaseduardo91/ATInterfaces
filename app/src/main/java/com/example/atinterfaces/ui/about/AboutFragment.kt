@@ -5,13 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 
 import com.example.atinterfaces.R
+import com.example.atinterfaces.viewmodels.PedidoViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
 class AboutFragment : Fragment() {
+
+    private lateinit var pedidoViewModel: PedidoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,6 +25,24 @@ class AboutFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_about, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        activity?.let { act ->
+            pedidoViewModel = ViewModelProviders.of(act)
+                .get(PedidoViewModel::class.java)
+        }
+        var totCompra = activity!!.findViewById<TextView>(R.id.txtTot)
+        subscribe(totCompra)
+    }
+
+    private fun subscribe(totCompra : TextView){
+        pedidoViewModel.total!!.observe(this, Observer {
+
+            totCompra.text = "Total: R$" + pedidoViewModel.total.value.toString()
+        })
     }
 
 }
