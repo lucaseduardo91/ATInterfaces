@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.atinterfaces.models.Produto
+import java.io.Serializable
 
-class PedidoViewModel : ViewModel(){
+class PedidoViewModel : ViewModel(), Serializable{
     var produtos = mutableListOf<Produto>()
     var total = MutableLiveData<Double>().apply{value = 0.0}
 

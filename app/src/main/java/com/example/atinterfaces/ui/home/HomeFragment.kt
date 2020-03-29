@@ -1,5 +1,6 @@
 package com.example.atinterfaces.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +9,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.atinterfaces.DadosEnvioActivity
 import com.example.atinterfaces.R
 import com.example.atinterfaces.viewmodels.PedidoViewModel
 import kotlinx.android.synthetic.main.fragment_cart.*
+import java.io.Serializable
 
 class HomeFragment : Fragment() {
 
@@ -33,6 +36,7 @@ class HomeFragment : Fragment() {
         }
         var totCompra = activity!!.findViewById<TextView>(R.id.txtTot)
         subscribe(totCompra)
+
     }
 
     private fun subscribe(totCompra : TextView){
