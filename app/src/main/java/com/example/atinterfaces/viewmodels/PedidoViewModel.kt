@@ -18,7 +18,10 @@ class PedidoViewModel : ViewModel(), Serializable{
         if(indice > -1)
             produtos[indice].qtd++
         else
+        {
+            produto.qtd = 1
             produtos.add(produto)
+        }
 
         total.value = total.value?.plus(produto!!.preco)
         var aux1 = total.value

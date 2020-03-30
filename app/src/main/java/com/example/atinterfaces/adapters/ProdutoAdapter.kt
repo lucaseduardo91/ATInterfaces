@@ -40,7 +40,7 @@ class ProdutoAdapter(pedidoViewModel: PedidoViewModel, listaProdutos: MutableLis
                 pedidoViewModel.addProduto(listaProdutos[prodIndice])
 
                 //Atualiza qtd do produto na recycler
-                listaProdutos[prodIndice].qtd++
+                //listaProdutos[prodIndice].qtd++
 
             }
             catch(nfe: NumberFormatException){
@@ -60,7 +60,7 @@ class ProdutoAdapter(pedidoViewModel: PedidoViewModel, listaProdutos: MutableLis
                     pedidoViewModel.removeProduto(listaProdutos[prodIndice])
 
                     //Atualiza qtd do produto na recycler
-                    listaProdutos[prodIndice].qtd--
+                    //listaProdutos[prodIndice].qtd--
 
                 }
 
