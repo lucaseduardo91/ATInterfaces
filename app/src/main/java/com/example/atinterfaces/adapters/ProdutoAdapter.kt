@@ -39,9 +39,6 @@ class ProdutoAdapter(pedidoViewModel: PedidoViewModel, listaProdutos: MutableLis
                 // Insere o produto na lista de produtos do pedido
                 pedidoViewModel.addProduto(listaProdutos[prodIndice])
 
-                //Atualiza qtd do produto na recycler
-                //listaProdutos[prodIndice].qtd++
-
             }
             catch(nfe: NumberFormatException){
             }
@@ -58,9 +55,6 @@ class ProdutoAdapter(pedidoViewModel: PedidoViewModel, listaProdutos: MutableLis
 
                     // Remove o produto na lista de produtos do pedido
                     pedidoViewModel.removeProduto(listaProdutos[prodIndice])
-
-                    //Atualiza qtd do produto na recycler
-                    //listaProdutos[prodIndice].qtd--
 
                 }
 
