@@ -29,7 +29,7 @@ class CardapioFragment : Fragment() {
         Produto("Hambúrguer","Carne, tomate, alface e queijo",12.50,R.drawable.hamburguer),
         Produto("Costela","Costela bovina",42.50,R.drawable.costela),
         Produto("Cerveja","Cerveja artesanal 500mL",17.50,R.drawable.cervejasembkg),
-        Produto("Refrigerante","Coca Cola, Pepsi ou Sprite 2L",6.00,R.drawable.refrigerante))
+        Produto("Refrigerante","Coca Cola 2L",6.00,R.drawable.refrigerante))
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
